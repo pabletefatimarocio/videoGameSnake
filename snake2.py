@@ -17,5 +17,14 @@ head.penup()
 head.goto(0,0) 
 head.direction ="stop"
 
+#function
+def mov():
+    if head.direction == "up":
+        y = head.ycor()
+        head.sety( y + 20)
+    
+
+
 while True: 
     wn.update()
+
