@@ -1,4 +1,7 @@
 import turtle
+import time
+
+posponer = 0.1
 
 wn = turtle.Screen()
 wn.title("Game Snake")
@@ -15,16 +18,25 @@ head.shape("square")
 head.color("white")
 head.penup()
 head.goto(0,0) 
-head.direction ="stop"
+head.direction ="up"
 
 #function
 def mov():
     if head.direction == "up":
         y = head.ycor()
         head.sety( y + 20)
+    if head.direction == "down":
+        y = head.ycor()
+        head.sety( y - 20)
+    if head.direction == "left":
+        x = head.xcor()
+        head.setx( x - 20)
+    if head.direction == "right":
+        x = head.xcor()
+        head.setx( x + 20)
     
-
-
 while True: 
     wn.update()
 
+    mov()
+    time.sleep(posponer)
