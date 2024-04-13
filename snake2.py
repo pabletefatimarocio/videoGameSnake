@@ -1,5 +1,6 @@
 import turtle
 import time
+import random
 
 posponer = 0.1
 
@@ -20,6 +21,15 @@ head.color("white")
 head.penup()
 head.goto(0,0) 
 head.direction ="stop"
+
+
+#Red
+food= turtle.Turtle()
+food.speed(0)
+food.shape("circle")
+food.color("red")
+food.penup()
+food.goto(0,100) 
 
 
 #function
@@ -56,6 +66,12 @@ wn.onkeypress(derecha, "Right")
 
 while True: 
     wn.update()
+#por defecto el cuadrado blanco es de 20 por 20 pixeles.
+    if head.distance(food) < 20:
+       x = random.randint(-280, 280)
+       y = random.randint(-280, 280)
+       food.goto(x,y)
+
 
     mov()
     time.sleep(posponer)
