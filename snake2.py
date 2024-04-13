@@ -3,6 +3,7 @@ import time
 
 posponer = 0.1
 
+#Window
 wn = turtle.Screen()
 wn.title("Game Snake")
 wn.bgcolor("black")
@@ -19,6 +20,7 @@ head.color("white")
 head.penup()
 head.goto(0,0) 
 head.direction ="stop"
+
 
 #function
 def arriba():
@@ -47,10 +49,10 @@ def mov():
 
 #Teclado
 wn.listen()
-wn.onkepress(arriba,"Up")
-wn.onkepress(abajo,"Down")
-wn.onkepress(izquierda,"Left")
-wn.onkepress(derecha,"Right")
+wn.onkeypress(arriba, "Up")
+wn.onkeypress(abajo, "Down")
+wn.onkeypress(izquierda, "Left")
+wn.onkeypress(derecha, "Right")
 
 while True: 
     wn.update()
