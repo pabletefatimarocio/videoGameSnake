@@ -32,6 +32,7 @@ food.penup()
 food.goto(0,100) 
 
 
+
 #function
 def arriba():
     head.direction = "up"
@@ -41,6 +42,10 @@ def izquierda():
     head.direction = "left"
 def derecha():
     head.direction = "right"
+
+#segment
+segments = []
+
 
 
 def mov():
@@ -57,7 +62,7 @@ def mov():
         x = head.xcor()
         head.setx( x + 20)
 
-#Teclado
+#keyboard
 wn.listen()
 wn.onkeypress(arriba, "Up")
 wn.onkeypress(abajo, "Down")
@@ -71,7 +76,25 @@ while True:
        x = random.randint(-280, 280)
        y = random.randint(-280, 280)
        food.goto(x,y)
+       new_segment = turtle.Turtle()
+       new_segment.speed(0)
+       new_segment.shape("square")
+       new_segment.color("grey")
+       new_segment.penup()
+       segments.append(new_segment)
 
+       totalSeg = len(segments)
+       for index in range(totalSeg -1, 0, -1):
+        x = segments[index - 1].xcor()
+        y = segments[index - 1].ycor()
+        segments[index].goto(x,y)
+
+       if totalSeg > 0:
+         x = head.xcor()
+         y = head.ycor()
+         segments[0].goto(x, y)
+
+     
 
     mov()
     time.sleep(posponer)
