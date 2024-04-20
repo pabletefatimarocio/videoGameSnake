@@ -46,6 +46,15 @@ def derecha():
 #segment
 segments = []
 
+text = turtle.Turtle()
+text.speed(0)
+text.color("white")
+text.penup()
+text.hideturtle()
+text.goto(0,260)
+text.write("Score: 0         High Score: 0", align = "center", font=("Courier",24,"normal"))
+
+
 
 
 def mov():
@@ -111,4 +120,15 @@ while True:
      
 
     mov()
+
+    for segment in segments:
+        if segment.distance(head) < 20:
+            time.sleep(1)
+            head.goto(0,0)
+            head.direction="stop"
+
+            for segment in segments: 
+                segment.goto(1000,1000)
+            segments.clear()
+
     time.sleep(posponer)
