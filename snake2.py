@@ -4,6 +4,9 @@ import random
 
 posponer = 0.1
 
+score = 0
+high_score = 0
+
 #Window
 wn = turtle.Screen()
 wn.title("Game Snake")
@@ -90,7 +93,13 @@ while True:
             segment.goto(1000,1000)
         
         segments.clear()
-            
+
+        #
+        score = 0
+        text.clear()
+        text.write("Score: {}      High Score: {}".format(score, high_score),
+              align = "center", font=("Courier",24,"normal"))
+             
 
 
 
@@ -105,6 +114,17 @@ while True:
        new_segment.color("grey")
        new_segment.penup()
        segments.append(new_segment)
+
+       #
+       score += 1
+       if score > high_score:
+           high_score = score
+
+       text.clear()
+       text.write("Score: {}   High Score: {}".format(score, high_score),
+              align = "center", font=("Courier",24,"normal"))
+           
+       
 
     totalSeg = len(segments)
     for index in range(totalSeg -1, 0, -1):
@@ -130,5 +150,12 @@ while True:
             for segment in segments: 
                 segment.goto(1000,1000)
             segments.clear()
+
+
+            #
+            score = 0 
+            text.clear()
+            text.write("Score: {}   High Score: {}".format(score, high_score),
+              align = "center", font=("Courier",24,"normal"))
 
     time.sleep(posponer)
